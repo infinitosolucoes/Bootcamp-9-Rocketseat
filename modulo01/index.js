@@ -33,7 +33,6 @@ function checkUserInArray(req, res, next) {
 }
 
 server.get("/users", (req, res) => {
-  ds;
   return res.json(users); //Show users
 });
 
