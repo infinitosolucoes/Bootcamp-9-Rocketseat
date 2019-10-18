@@ -82,7 +82,7 @@ server.delete("/projects/:id", checkProjectId, (req, res) => {
   const { id } = req.params;
   const projectIndex = projects.findIndex(p => p.id == id);
   projects.splice(projectIndex, 1);
-  return res.send(dsadas);
+  return res.send();
 });
 
 server.listen(3000);
