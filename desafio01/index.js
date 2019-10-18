@@ -80,8 +80,8 @@ server.put("/projects/:id", (req, res) => {
 //Delete (delete)
 server.delete("/projects/:id", checkProjectId, (req, res) => {
   const { id } = req.params;
-  const index = projects.findIndex(p => p.id == id);
-  projects.splice(index, 1);
+  const projectIndex = projects.findIndex(p => p.id == id);
+  projects.splice(projectIndex, 1);
   return res.send();
 });
 
