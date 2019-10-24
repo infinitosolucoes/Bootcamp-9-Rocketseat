@@ -26,6 +26,11 @@ class User extends Model {
     return this;
   }
 
+  // Criando relacionamento, salvando o id arquivo dentro da tabela de usuario
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'avatar_id' });
+  }
+
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);
   }
