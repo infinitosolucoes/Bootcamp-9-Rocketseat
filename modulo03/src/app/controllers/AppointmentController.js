@@ -44,6 +44,13 @@ class AppointmentController {
       return res.status(400).json({ error: 'Validation fails' });
     }
     const { provider_id, date } = req.body;
+    // Usuario nao pode agendar para si mesmo
+    if (provider_id === req.userId) {
+      return res
+        .status(401)
+        .json({ error: "You can't create an appointment for yourself" });
+    }
+
     /*
     Verificar se o provider_id é um provider
     */
@@ -75,6 +82,7 @@ class AppointmentController {
       provider_id,
       date,
     });
+
     /* Notificar o prestador de serviços */
     const user = await User.findByPk(req.userId);
     const formattedDate = format(hourStart, "dd 'de' MMMM', às' H:mm' hrs'", {
