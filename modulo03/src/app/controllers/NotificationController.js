@@ -20,7 +20,8 @@ class NotificationController {
   }
 
   async update(req, res) {
-    // const notification = await Notification.findById(req.params.id);
+    // Criando a rota pra marcar como lida a notificação
+
     const notification = await Notification.findByIdAndUpdate(
       req.params.id,
       {
